@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprende+ - Dashboard de Estudos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <header>
+    <h1>📚 Aprende+</h1>
+  </header>
+
+  <main>
+    <!-- Aba Início -->
+    <section id="inicio" class="tab-content active">
+      <h2>Bem-vindo ao Aprende+!</h2>
+
+      <p>Organize seus estudos de forma prática e eficiente. Registre cursos, acompanhe seu progresso e filtre facilmente por categoria ou status.</p>
+      <p>Navegue pelas abas abaixo para começar:</p>
+      <ul>
+        <li><strong>Adicionar Curso:</strong> registre novos cursos e acompanhe cada detalhe.</li>
+        <li><strong>Meus Cursos:</strong> visualize todos os cursos, status e progresso.</li>
+      </ul>
+      <p>Estudar nunca foi tão organizado e motivador!</p>
+    </section>
+
+    <!-- Aba Adicionar Curso -->
+    <section id="adicionar" class="tab-content">
+      <h2>Adicionar Curso</h2>
+      <input type="text" id="nomeCurso" placeholder="Nome do curso">
+      <input type="text" id="categoriaCurso" placeholder="Categoria (Ex: Frontend)">
+      <input type="url" id="linkCurso" placeholder="Link do curso (opcional)">
+      <select id="statusCurso">
+        <option value="nao-iniciado">Não iniciado</option>
+        <option value="andamento">Em andamento</option>
+        <option value="concluido">Concluído</option>
+      </select>
+      <button id="btnAdicionar">Adicionar Curso</button>
+    </section>
+
+    <!-- Aba Meus Cursos -->
+    <section id="meus" class="tab-content">
+      <h2>Meus Cursos</h2>
+      <div class="filtros">
+        <select id="filtroCategoria">
+          <option value="todas">Todas categorias</option>
+        </select>
+        <select id="filtroStatus">
+          <option value="todos">Todos status</option>
+          <option value="nao-iniciado">Não iniciado</option>
+          <option value="andamento">Em andamento</option>
+          <option value="concluido">Concluído</option>
+        </select>
+      </div>
+      <progress id="progresso" value="0" max="100"></progress>
+      <span id="progresso-texto">0% concluído</span>
+      <ul id="cursos"></ul>
+    </section>
+  </main>
+
+  <!-- Menu fixo embaixo com tooltip -->
+  <nav class="menu">
+    <div class="icon inicio active" data-tab="inicio">
+      <span><i data-lucide="home"></i></span>
+      <div class="tooltip">Início</div>
+    </div>
+    <div class="icon add" data-tab="adicionar">
+      <span><i data-lucide="plus-circle"></i></span>
+      <div class="tooltip">Adicionar</div>
+    </div>
+    <div class="icon cursos" data-tab="meus">
+      <span><i data-lucide="book-open"></i></span>
+      <div class="tooltip">Meus Cursos</div>
+    </div>
+  </nav>
+
+  <script src="script.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
