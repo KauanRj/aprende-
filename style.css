@@ -1,3 +1,4 @@
+/* Reset e fonte */
 *{
   margin: 0;
   padding: 0;
@@ -13,6 +14,7 @@ body{
   color: #333;
 }
 
+/* Header */
 header{
   text-align: center;
   padding: 1rem;
@@ -21,6 +23,7 @@ header{
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* Main */
 main{
   flex: 1;
   padding: 2rem 1rem;
@@ -30,6 +33,7 @@ main{
   margin-bottom: 90px;
 }
 
+/* Aba */
 .tab-content{
   display: none;
   background: white;
@@ -52,6 +56,7 @@ h2{
   text-align: center;
 }
 
+/* Inputs e selects */
 input, select{
   display: block;
   margin: 8px 0;
@@ -59,8 +64,10 @@ input, select{
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 10px;
+  font-size: 14px;
 }
 
+/* Botões */
 button{
   background: #4a90e2;
   color: white;
@@ -70,13 +77,15 @@ button{
   cursor: pointer;
   font-weight: bold;
   margin-top: 12px;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover{
   background: #357ABD;
+  transform: translateY(-2px);
 }
 
+/* Progress bar */
 progress{
   width: 100%;
   height: 20px;
@@ -93,8 +102,11 @@ progress{
   background: #4a90e2;
 }
 
+/* Listas e cards */
 ul{
   list-style: none;
+  width: 100%;
+  padding: 0;
 }
 
 .card{
@@ -103,6 +115,10 @@ ul{
   border-radius: 15px;
   margin-bottom: 1rem;
   box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card:hover{
@@ -110,13 +126,48 @@ ul{
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
+/* Botões Editar e Remover */
+.card button.editar{
+  background: #f1c40f;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-left: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.card button.editar:hover{
+  background: #d4ac0d;
+  transform: translateY(-2px);
+}
+
+.card button.remover{
+  background: #e74c3c;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-left: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.card button.remover:hover{
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Filtros */
 .filtros{
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
+/* Menu fixo */
 .menu{
   position: fixed;
   bottom: 0;
@@ -128,62 +179,78 @@ ul{
   justify-content: space-around;
   align-items: center;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+  z-index: 10;
 }
 
 .menu .icon{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
-  cursor: pointer;
-  color: #666;
-  transition: 0.3s;
+  margin: 0 10px;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .menu .icon span{
+  height: 60px;
+  width: 60px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: #eee;
+  justify-content: center;
+  background-color: #eee;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-  transition: 0.3s;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
 
-.menu .icon span i{
-  width: 24px;
-  height: 24px;
-  stroke-width: 2.2px;
-  stroke: #333;
+.menu .icon span svg{
+  width: 25px;
+  height: 25px;
+  color: #333;
 }
 
+/* Tooltip */
 .menu .icon .tooltip{
   position: absolute;
-  bottom: 60px;
-  background: #4a90e2;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
+  top: -50px;
+  background-color: #eee;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 25px;
+  font-size: 16px;
+  white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  white-space: nowrap;
-  transition: 0.3s;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 10px 10px rgba(0,0,0,0.1);
 }
 
 .menu .icon:hover .tooltip{
   opacity: 1;
-  bottom: 70px;
+  pointer-events: auto;
 }
 
-.menu .icon.active span,
-.menu .icon:hover span{
-  background: #ccced1;
+/* Tooltip arrow */
+.menu .icon .tooltip::before{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #eee;
+  transform: translateX(-50%) rotate(45deg);
+  bottom: -8px;
+  left: 50%;
 }
 
-.menu .icon.active span i,
-.menu .icon:hover span i{
-  stroke: #fff;
-}
+/* Cores menu */
+.menu .inicio:hover span,
+.menu .inicio:hover .tooltip,
+.menu .inicio:hover .tooltip::before { background-color: #3b5998; color: #fff; }
+.menu .add:hover span,
+.menu .add:hover .tooltip,
+.menu .add:hover .tooltip::before { background-color: #28a745; color: #fff; }
+.menu .cursos:hover span,
+.menu .cursos:hover .tooltip,
+.menu .cursos:hover .tooltip::before { background-color: #ff9900; color: #fff; }
